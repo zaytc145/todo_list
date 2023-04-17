@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
+import RegistrationView from "../views/RegistrationView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,10 +14,15 @@ const routes: Array<RouteRecordRaw> = [
     name: "login",
     component: LoginView,
   },
+  {
+    path: "/register",
+    name: "register",
+    component: RegistrationView,
+  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.TODO_API_BASE_URL),
   routes,
 });
 

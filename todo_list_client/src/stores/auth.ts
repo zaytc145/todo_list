@@ -1,5 +1,6 @@
-import { login } from "@/api/auth";
+import { login, register } from "@/api/auth";
 import LoginForm from "@/types/LoginForm";
+import RegisterForm from "@/types/RegisterForm";
 import User from "@/types/User";
 import { defineStore } from "pinia";
 
@@ -14,11 +15,14 @@ export const useAuthStore = defineStore("auth", {
     };
   },
   actions: {
-    async login(payload: LoginForm) {
-      const response = await login(payload);
+    async login(formData: LoginForm) {
+      const response = await login(formData);
       this.user = response;
     },
     // logout(){},
-    // registration(){},
+    async register(formData: RegisterForm) {
+      const response = await register(formData);
+      this.user = response;
+    },
   },
 });
