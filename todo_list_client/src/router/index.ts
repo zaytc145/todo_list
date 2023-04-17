@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.TODO_API_BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_TODO_API_BASE_URL),
   routes,
 });
 
