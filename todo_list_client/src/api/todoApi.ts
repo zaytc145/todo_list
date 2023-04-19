@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const todoApi = axios.create({
-  baseURL: `${import.meta.env.TODO_API_BASE_URL}/api`,
+  baseURL: `${import.meta.env.VITE_TODO_API_BASE_URL}/api`,
   withCredentials: true,
   headers: {
     common: {

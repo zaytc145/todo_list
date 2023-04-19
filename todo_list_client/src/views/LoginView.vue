@@ -1,13 +1,13 @@
 <template>
   <div>
-    <form @click.prevent="submit">
+    <form @submit.prevent="submit">
       <div>
         <label for="">email</label>
-        <input type="text" v-model="loginForm.email" />
+        <input type="email" v-model="loginForm.email" />
       </div>
       <div>
         <label for="">password</label>
-        <input type="text" v-model="loginForm.password" />
+        <input type="password" v-model="loginForm.password" />
       </div>
       <button>Submit</button>
     </form>

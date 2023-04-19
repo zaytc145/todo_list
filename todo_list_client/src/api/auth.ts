@@ -4,7 +4,7 @@ import User from "@/types/User";
 import todoApi from "./todoApi";
 
 export const login = async (formData: LoginForm): Promise<User> => {
-  const response = await todoApi.post("/api/login", formData, {
+  const response = await todoApi.post("/login", formData, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -12,9 +12,11 @@ export const login = async (formData: LoginForm): Promise<User> => {
   return response.data;
 };
 
-// export const logout: User = () => {};
+export const logout = async () => {
+  await todoApi.post("/logout");
+};
 
 export const register = async (formData: RegisterForm): Promise<User> => {
-  const response = await todoApi.post("/api/register", formData);
+  const response = await todoApi.post("/register", formData);
   return response.data;
 };

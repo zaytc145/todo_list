@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegistrationView from "../views/RegistrationView.vue";
+import ProfileView from "../views/ProfileView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,11 +20,35 @@ const routes: Array<RouteRecordRaw> = [
     name: "register",
     component: RegistrationView,
   },
+  {
+    path: "/profile",
+    name: "profile",
+    component: ProfileView,
+  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_TODO_API_BASE_URL),
+  history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.middleware) {
+    return next();
+  }
+  const middleware = to.meta.middleware;
+
+  const context = {
+    to,
+    from,
+    next,
+    store,
+  };
+
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1),
+  });
 });
 
 export default router;
