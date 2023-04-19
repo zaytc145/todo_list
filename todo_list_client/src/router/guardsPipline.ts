@@ -1,4 +1,4 @@
-function middlewarePipeline(context, middleware, index) {
+function guardsPipeline(context, middleware, index) {
   const nextMiddleware = middleware[index];
 
   if (!nextMiddleware) {
@@ -6,7 +6,7 @@ function middlewarePipeline(context, middleware, index) {
   }
 
   return () => {
-    const nextPipeline = middlewarePipeline(context, middleware, index + 1);
+    const nextPipeline = guardsPipeline(context, middleware, index + 1);
 
     nextMiddleware({ ...context, next: nextPipeline });
   };
